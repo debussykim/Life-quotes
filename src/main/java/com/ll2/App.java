@@ -9,21 +9,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
-    public final Scanner sc;
-    public App(Scanner sc) {
-        this.sc = sc;
-    }
 
     public void run() {
         System.out.println("== 명언 SSG ==");
 
         long lastWiseSayingId = 0;
         SystemController systemController = new SystemController();
-        WiseSayingController wiseSayingController = new WiseSayingController(sc);
+        WiseSayingController wiseSayingController = new WiseSayingController();
 
         while(true) {
             System.out.printf("명령) ");
-            String input = sc.nextLine().trim(); // 좌우공백 제거
+            String input = Container.getScanner().nextLine().trim(); // 좌우공백 제거
 
             if (input.equals("등록")){
                 wiseSayingController.write();
@@ -36,8 +32,6 @@ public class App {
                 break;
             }
         }
-
-        sc.close();
     }
 
 }
