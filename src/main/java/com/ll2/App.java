@@ -1,5 +1,7 @@
 package com.ll2;
 
+import com.ll2.system.controller.SystemController;
+import com.ll2.wiseSaying.controller.WiseSayingController;
 import com.ll2.wiseSaying.entity.WiseSaying;
 
 import java.util.ArrayList;
@@ -16,35 +18,21 @@ public class App {
         System.out.println("== 명언 SSG ==");
 
         long lastWiseSayingId = 0;
-        List<WiseSaying> wiseSayings = new ArrayList<>();
+        SystemController systemController = new SystemController();
+        WiseSayingController wiseSayingController = new WiseSayingController(sc);
 
         while(true) {
             System.out.printf("명령) ");
             String input = sc.nextLine().trim(); // 좌우공백 제거
 
             if (input.equals("등록")){
-                long id = lastWiseSayingId + 1;
-                System.out.printf("명언 : ");
-                String content =sc.nextLine().trim();
-                System.out.printf("작가 : ");
-                String author=sc.nextLine().trim();
-
-                WiseSaying wiseSaying = new WiseSaying(id, content, author);
-                wiseSayings.add(wiseSaying);
-                System.out.printf("%d번 명언이 등록되었습니다.\n", id);
-                lastWiseSayingId = id;
+                wiseSayingController.write();
             }
             else if(input.equals("목록")){
-                System.out.println("번호 / 명언 / 작가");
-                System.out.println("-".repeat(30));
-
-                for(int i=wiseSayings.size()-1; i>=0; i--){
-                    WiseSaying wiseSaying = wiseSayings.get(i);
-                    System.out.printf("%d / %s / %s\n", wiseSaying.getId(), wiseSaying.getContent(), wiseSaying.getAuthor());
-
-                }
+                wiseSayingController.list();
             }
             else if(input.equals("종료")){
+                systemController.exit();
                 break;
             }
         }
