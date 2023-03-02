@@ -29,11 +29,18 @@ public class App {
 
                 WiseSaying wiseSaying = new WiseSaying(id, content, author);
                 wiseSayings.add(wiseSaying);
-                System.out.printf("%d번 명언이 등록되었습니다.", id);
+                System.out.printf("%d번 명언이 등록되었습니다.\n", id);
                 lastWiseSayingId = id;
             }
             else if(input.equals("목록")){
-                System.out.println("생성된 명언 수 : " + wiseSayings.size());
+                System.out.println("번호 / 명언 / 작가");
+                System.out.println("-".repeat(30));
+
+                for(int i=wiseSayings.size()-1; i>=0; i--){
+                    WiseSaying wiseSaying = wiseSayings.get(i);
+                    System.out.printf("%d / %s / %s\n", wiseSaying.getId(), wiseSaying.getContent(), wiseSaying.getAuthor());
+
+                }
             }
             else if(input.equals("종료")){
                 break;
