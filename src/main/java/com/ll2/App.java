@@ -1,5 +1,7 @@
 package com.ll2;
 
+import com.ll2.wiseSaying.entity.WiseSaying;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

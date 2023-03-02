@@ -1,4 +1,4 @@
-package com.ll2;
+package com.ll2.wiseSaying.entity;
 
 
 public class WiseSaying {
