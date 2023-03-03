@@ -3,9 +3,7 @@ package com.ll2.wiseSaying.controller;
 import com.ll2.Container;
 import com.ll2.wiseSaying.entity.WiseSaying;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class WiseSayingController {
     private long lastWiseSayingId;
@@ -41,6 +39,5 @@ public class WiseSayingController {
     }
 
     public void remove() {
-
     }
 }

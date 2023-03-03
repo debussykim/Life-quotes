@@ -26,24 +26,11 @@ public class App {
                 wiseSayingController.list();
             }
             else if(input.startsWith("삭제")){
-                // 정리 시작
-                String[] inputBits = input.split("\\?", 2); //최대 2개까지 ?를 기준으로 나누기
-                //System.out.println(Arrays.toString(inputBits));
-                String actionCode = inputBits[0];
-
-                Map<String, String> params = new HashMap<>();
-                String[] paramBits = inputBits[1].split("&");
-                for (String paramStr : paramBits) {
-                    String[] paramStrBits = paramStr.split("=", 2);
-                    String key = paramStrBits[0];
-                    String value = paramStrBits[1];
-                    params.put(key, value);
-                }
-
-                // 정리 끝
-                System.out.printf("actionCode: %s\n", actionCode);
-                System.out.printf("params: %s\n", params);
-
+                Rq rq = new Rq(input);
+                System.out.printf("actionCode : %s\n", rq.getActionCode());
+                System.out.printf("params.id : %s\n", rq.getParam("id"));
+                System.out.printf("params.authorName : %s\n", rq.getParam("authorName"));
+                System.out.printf("params.content : %s\n", rq.getParam("content"));
                 wiseSayingController.remove();
             }
             else if(input.equals("종료")){
