@@ -19,23 +19,21 @@ public class App {
             System.out.printf("명령) ");
             String input = Container.getScanner().nextLine().trim(); // 좌우공백 제거
 
-            if (input.equals("등록")){
-                wiseSayingController.write();
-            }
-            else if(input.equals("목록")){
-                wiseSayingController.list();
-            }
-            else if(input.startsWith("삭제")){
-                Rq rq = new Rq(input);
-                System.out.printf("actionCode : %s\n", rq.getActionCode());
-                System.out.printf("params.id : %s\n", rq.getParam("id"));
-                System.out.printf("params.authorName : %s\n", rq.getParam("authorName"));
-                System.out.printf("params.content : %s\n", rq.getParam("content"));
-                wiseSayingController.remove();
-            }
-            else if(input.equals("종료")){
-                systemController.exit();
-                break;
+            Rq rq = new Rq(input);
+
+            switch (rq.getActionCode()) {
+                case "종료":
+                    systemController.exit();
+                    return;
+                case "등록":
+                    wiseSayingController.write();
+                    break;
+                case "목록":
+                    wiseSayingController.list();
+                    break;
+                case "삭제":
+                    wiseSayingController.remove();
+                    break;
             }
         }
     }
