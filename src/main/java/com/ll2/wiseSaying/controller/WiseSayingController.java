@@ -2,6 +2,7 @@ package com.ll2.wiseSaying.controller;
 
 import com.ll2.Container;
 import com.ll2.wiseSaying.entity.WiseSaying;
+import com.ll2.Rq;
 
 import java.util.*;
 
@@ -38,6 +39,15 @@ public class WiseSayingController {
         }
     }
 
-    public void remove() {
+    public void remove(Rq rq) {
+        int id = -1;
+
+        try {
+            id = Integer.parseInt(rq.getParam("id"));
+        } catch (NumberFormatException e) {
+            System.out.println("id(정수)를 입력해주세요.");
+            return;
+        }
+        System.out.printf("%d번 명언이 삭제되었습니다.\n", id);
     }
 }
